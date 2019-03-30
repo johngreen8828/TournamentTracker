@@ -4,8 +4,12 @@ using System.Text;
 
 namespace TrackerLibrary.Models
 {
-    public class TorunamentModel
+    public class TournamentModel
     {
+        /// <summary>
+        /// Unique ID for the TournamentModel row
+        /// </summary>
+        public int Id { get; set; }
         public string TournamentName { get; set; }
         public decimal EntryFee { get; set; }
         public List<TeamModel> EnteredTeams { get; set; } = new List<TeamModel>();
