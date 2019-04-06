@@ -9,19 +9,23 @@ namespace TrackerLibrary.DataAccess
 {
     public class TextConnector : IDataConnection
     {
-        
-        
+
+        private const string PrizesFile = "PrizeModel.csv";
+        private const string PeopleFile = "PersonModel.csv";
+        private const string TeamFile = "TeamModels.csv";
+        private const string TournamentFile = "TournamentModels.csv";
+        private const string MatchupFile = "MatchupModels.csv";
+        private const string MatchupEntryFile = "MatchupEntryModels.csv";
+
+
         //Convert the text to a list for the model
         //Find the max id 
         //add the new record with new id max + 1
         //convert the model values to a list<string>
         //save the list<string> to the text file
 
-        private const string PrizesFile = "PrizeModel.csv";
-        private const string PeopleFile = "PersonModel.csv";
-        private const string TeamFile = "TeamModels.csv";
-        private const string TournamentFile = "TournamentModels.csv";
-        
+
+
         public PersonModel CreatePerson(PersonModel model)
         {
             List<PersonModel> people = PeopleFile.FullFilePath().LoadFile().ConvertToPersonModels();
@@ -91,6 +95,8 @@ namespace TrackerLibrary.DataAccess
                 currentId = tournaments.OrderByDescending(x => x.Id).First().Id + 1;
             }
             model.Id = currentId;
+
+            model.SaveRoundsToFile(MatchupFile, MatchupEntryFile);
 
             tournaments.Add(model);
 
