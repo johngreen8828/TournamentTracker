@@ -63,7 +63,7 @@ namespace TrackerUI
                 p.CellPhoneNumber = cellPhoneValue.Text;
 
                 //Added p to capture the person data and added the code to wire up the list box during the save
-                p = GlobalConfig.Connection.CreatePerson(p);
+                GlobalConfig.Connection.CreatePerson(p);
                 selectedTeamMembers.Add(p);
                 WireUpLists();
 
